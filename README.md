@@ -22,24 +22,90 @@ Hệ thống được kiểm thử trên **12 bộ dữ liệu (datasets)**, bao
 
 ## 📈 Kết Quả Thực Nghiệm
 
-Dưới đây là bảng tổng hợp kết quả chạy thực tế (đo lường trên CPU tiêu chuẩn):
+Dưới đây là tổng hợp chi tiết kết quả chạy thực tế của thuật toán tối ưu hóa (Task 5), được đo lường trên CPU tiêu chuẩn.
 
-| Tên Mô Hình | $|P|$ | $|T|$ | Max Value | Thời Gian (s) | Marking Tối Ưu (Rút gọn) |
-|---|:---:|:---:|:---:|:---:|:---:|---|
-| **Basic Tests** |||||||
-| `input1.pnml` | 4 | 2 | 4 | 0.0010 | `[1, 1, 1, 1]` |
-| `input2.pnml` | 5 | 4 | 5 | 0.0010 | `[1, 1, 1, 1, 1]` |
-| `input3.pnml` | 4 | 2 | 4 | 0.0000 | `[1, 1, 1, 1]` |
-| `input4.pnml` | 5 | 5 | 5 | 0.0029 | `[1, 1, 1, 1, 1]` |
-| `input5.pnml` | 8 | 6 | 8 | 0.0041 | `[1, ..., 1]` |
-| `input6.pnml` | 8 | 12 | 8 | 0.0165 | `[1, ..., 1]` |
-| **Benchmarks** |||||||
-| `mixed_stress.pnml`| 15 | 20 | 11 | 0.0600 | `[1, 0, 0, 0, 1, ...]` |
-| `parallel.pnml` | 12 | 12 | 12 | 0.0054 | `[1, 1, 1, 1, 1, ...]` |
-| `readarc.pnml` | 8 | 10 | 8 | 0.0027 | `[1, 1, 1, 1, 1, ...]` |
-| `ring.pnml` | 8 | 8 | 1 | 0.0069 | `[1, 0, 0, 0, 0, ...]` |
-| `selfloop.pnml` | 10 | 6 | 6 | 0.0038 | `[1, 0, 1, 1, 1, ...]` |
-| `source_sink.pnml` | 12 | 16 | 8 | 0.0109 | `[1, 1, 1, 0, 1, ...]` |
+### 1. Nhóm Basic Tests (Kiểm thử cơ bản)
+*Các mạng nhỏ dùng để kiểm tra tính đúng đắn của thuật toán.*
+
+* **`input1.pnml`**
+    * Quy mô: $|P|=4$, $|T|=2$
+    * Max Value: **4**
+    * Thời gian: `0.0010s`
+    * Marking: `[1, 1, 1, 1]`
+
+* **`input2.pnml`**
+    * Quy mô: $|P|=5$, $|T|=4$
+    * Max Value: **5**
+    * Thời gian: `0.0010s`
+    * Marking: `[1, 1, 1, 1, 1]`
+
+* **`input3.pnml`**
+    * Quy mô: $|P|=4$, $|T|=2$
+    * Max Value: **4**
+    * Thời gian: `0.0000s`
+    * Marking: `[1, 1, 1, 1]`
+
+* **`input4.pnml`**
+    * Quy mô: $|P|=5$, $|T|=5$
+    * Max Value: **5**
+    * Thời gian: `0.0029s`
+    * Marking: `[1, 1, 1, 1, 1]`
+
+* **`input5.pnml`**
+    * Quy mô: $|P|=8$, $|T|=6$
+    * Max Value: **8**
+    * Thời gian: `0.0041s`
+    * Marking: `[1, ..., 1]`
+
+* **`input6.pnml`**
+    * Quy mô: $|P|=8$, $|T|=12$
+    * Max Value: **8**
+    * Thời gian: `0.0165s`
+    * Marking: `[1, ..., 1]`
+
+---
+
+### 2. Nhóm Benchmarks (Kiểm thử hiệu năng)
+*Các mạng phức tạp với cấu trúc đặc biệt (vòng lặp, song song, xung đột).*
+
+> **Mixed Stress Model (`mixed_stress.pnml`)**
+> * *Đặc điểm:* Mạng hỗn hợp phức tạp với nhiều xung đột tài nguyên.
+> * Quy mô: $|P|=15$, $|T|=20$
+> * **Max Value: 11**
+> * Thời gian: `0.0600s`
+> * Marking tối ưu: `[1, 0, 0, 0, 1, ...]`
+
+> **Parallel Model (`parallel.pnml`)**
+> * *Đặc điểm:* Mạng song song dễ gây bùng nổ không gian trạng thái.
+> * Quy mô: $|P|=12$, $|T|=12$
+> * **Max Value: 12**
+> * Thời gian: `0.0054s`
+> * Marking tối ưu: `[1, 1, 1, 1, 1, ...]`
+
+> **Ring Model (`ring.pnml`)**
+> * *Đặc điểm:* Mạng vòng kín, số lượng token được bảo toàn (Invariant).
+> * Quy mô: $|P|=8$, $|T|=8$
+> * **Max Value: 1**
+> * Thời gian: `0.0069s`
+> * Marking tối ưu: `[1, 0, 0, 0, 0, ...]`
+
+> **Read-Arc Model (`readarc.pnml`)**
+> * Quy mô: $|P|=8$, $|T|=10$
+> * **Max Value: 8**
+> * Thời gian: `0.0027s`
+> * Marking tối ưu: `[1, 1, 1, 1, 1, ...]`
+
+> **Self-loop Model (`selfloop.pnml`)**
+> * Quy mô: $|P|=10$, $|T|=6$
+> * **Max Value: 6**
+> * Thời gian: `0.0038s`
+> * Marking tối ưu: `[1, 0, 1, 1, 1, ...]`
+
+> **Source-Sink Model (`source_sink.pnml`)**
+> * Quy mô: $|P|=12$, $|T|=16$
+> * **Max Value: 8**
+> * Thời gian: `0.0109s`
+> * Marking tối ưu: `[1, 1, 1, 0, 1, ...]`
 
 ## 💡 Phân Tích Chi Tiết
 
