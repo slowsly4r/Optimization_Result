@@ -83,7 +83,7 @@ Dưới đây là tổng hợp chi tiết kết quả chạy thực tế của t
 > * Marking tối ưu: `[1, 1, 1, 1, 1, ...]`
 
 > **Ring Model (`ring.pnml`)**
-> * *Đặc điểm:* Mạng vòng kín, số lượng token được bảo toàn (Invariant).
+> * *Đặc điểm:* Mạng vòng kín, số lượng token được bảo toàn (Invariant). 
 > * Quy mô: $|P|=8$, $|T|=8$
 > * **Max Value: 1**
 > * Thời gian: `0.0069s`
