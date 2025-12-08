@@ -53,37 +53,31 @@ Dưới đây là tổng hợp chi tiết kết quả chạy thực tế của t
 ---
 
 ### 2. Nhóm mạng Benchmarks (Cấu trúc đặc biệt)
+*Các mạng mô phỏng các cấu trúc điển hình (Parallel, Ring, Shared Resource).*
 
-> **Input 7 (Mixed Stress Model)**  
-> * Quy mô: $|P|=15, |T|=20$  
-> * **Max Value: 11** | Time: `0.0702s` | Mem: `0.0117 MB`  
-> * Marking: `[0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]`
+* **`input7.pnml` (Mixed Stress)** ($|P|=15, |T|=20$)
+    * Max Value: **11** | Time: `0.0702s` | Mem: `0.0117 MB`
+    * Marking: `[0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0]`
 
-> **Input 8 (Parallel Model)**  
-> * Quy mô: $|P|=12, |T|=12$  
-> * **Max Value: 12** | Time: `0.1700s` | Mem: `0.0038 MB`  
-> * Marking: `[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]` (Full active)
+* **`input8.pnml` (Parallel)** ($|P|=12, |T|=12$)
+    * Max Value: **12** | Time: `0.1700s` | Mem: `0.0038 MB`
+    * Marking: `[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]` (Full active)
 
-> **Input 9 (Read-Arc Model)**  
-> * Quy mô: $|P|=8, |T|=10$  
-> * **Max Value: 8** | Time: `0.0000s` | Mem: `0.0084 MB`  
-> * Marking: `[1, 1, 1, 1, 1, 1, 1, 1]`
+* **`input9.pnml` (Read-Arc)** ($|P|=8, |T|=10$)
+    * Max Value: **8** | Time: `0.0000s` | Mem: `0.0084 MB`
+    * Marking: `[1, 1, 1, 1, 1, 1, 1, 1]`
 
-> **Input 10 (Ring Model)**  
-> * Quy mô: $|P|=8, |T|=8$  
-> * **Max Value: 1** | Time: `0.0000s` | Mem: `0.0106 MB`  
-> * Marking: `[0, 0, 0, 0, 0, 0, 0, 1]`  
-> * *Nhận xét:* Invariant được bảo toàn tuyệt đối (chỉ 1 token trong mạng).
+* **`input10.pnml` (Ring)** ($|P|=8, |T|=8$)
+    * Max Value: **1** | Time: `0.0000s` | Mem: `0.0106 MB`
+    * Marking: `[0, 0, 0, 0, 0, 0, 0, 1]` (Invariant bảo toàn 1 token)
 
-> **Input 11 (Self-loop Model)**  
-> * Quy mô: $|P|=10, |T|=6$  
-> * **Max Value: 6** | Time: `0.0000s` | Mem: `0.0079 MB`  
-> * Marking: `[1, 0, 1, 1, 1, 1, 1, 0, 0, 0]`
+* **`input11.pnml` (Self-loop)** ($|P|=10, |T|=6$)
+    * Max Value: **6** | Time: `0.0000s` | Mem: `0.0079 MB`
+    * Marking: `[1, 0, 1, 1, 1, 1, 1, 0, 0, 0]`
 
-> **Input 12 (Source-Sink Model)**  
-> * Quy mô: $|P|=12, |T|=16$  
-> * **Max Value: 8** | Time: `0.0120s` | Mem: `0.0064 MB`  
-> * Marking: `[1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1]`
+* **`input12.pnml` (Source-Sink)** ($|P|=12, |T|=16$)
+    * Max Value: **8** | Time: `0.0120s` | Mem: `0.0064 MB`
+    * Marking: `[1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1]`
 
 ---
 
